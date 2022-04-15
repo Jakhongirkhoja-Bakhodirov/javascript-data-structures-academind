@@ -1,0 +1,1 @@
+This repository is created in order to store Data Structures course source code 
