@@ -137,3 +137,17 @@ console.log(intersection(setA,setC));
 console.log(symmetricDifference(setA,setB));
 
 console.log(difference(setA,setC));
+
+//Relation with Array objects
+let myArr = ['value1' , 'value2' , 'value3'];
+let mySet = new Set(myArr);
+console.log([...mySet]);
+
+//Remove duplicate elements of an array using Set
+const numbers = [2,3,4,5,6,2,4,5,7,10,11,23,10,12,11];
+console.log([...new Set(numbers)]);
+
+//Relation with Strings
+let text = 'something-new';
+const myTextSet = new Set(text);
+console.log(myTextSet , myTextSet.size);
