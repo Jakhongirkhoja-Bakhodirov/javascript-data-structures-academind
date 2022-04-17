@@ -32,47 +32,108 @@
 // console.log(typeof(ids));
 
 //iterating sets
-const mySet1 = new Set()
+// const mySet1 = new Set()
 
-mySet1.add(1);           // Set [ 1 ]
-mySet1.add(5);           // Set [ 1, 5 ]
-mySet1.add(5);           // Set [ 1, 5 ]
-mySet1.add('some text'); // Set [ 1, 5, 'some text' ]
-const o = {a: 1, b: 2};
-mySet1.add(o);
+// mySet1.add(1);           // Set [ 1 ]
+// mySet1.add(5);           // Set [ 1, 5 ]
+// mySet1.add(5);           // Set [ 1, 5 ]
+// mySet1.add('some text'); // Set [ 1, 5, 'some text' ]
+// const o = {a: 1, b: 2};
+// mySet1.add(o);
 
-for(let item of mySet1) {
-    console.log(item);
+// for(let item of mySet1) {
+//     console.log(item);
+// }
+
+// for(let item of mySet1.keys()) {
+//     console.log(item);
+// }
+
+// for(let [key,value] of mySet1.entries()) {
+//     console.log(key,value);
+// }
+// //convert set object to an array object using Array.from method
+// const myArr = Array.from(mySet1);
+
+// console.log(myArr);
+
+// //converting between Set and Array
+// const mySet2 = new Set([1,2,3,4,4]);
+
+// const newArr = [...mySet2];
+
+// const myDupArrayEl = [1,2,3,3,4,4,5,6,6,1];
+
+// //intersect can be simulated via
+// const intersection = new Set([...mySet1].filter(x => mySet2.has(x)));
+
+// console.log('intersection' , intersection);
+
+// //Difference can be simulated via 
+// const difference = new Set([...mySet1].filter(x => !mySet2.has(x)));
+// console.log('difference' , difference);
+
+// mySet1.forEach((value) => {
+//     console.log(value);
+// });
+
+const setA = new Set([1,2,3,4]);
+const setB = new Set([2,3]);
+const setC = new Set([3,4,5,6]);
+
+const isSuperSet = (set,subset) => {
+    for(let element of subset) {
+        if(!set.has(element)) {
+            return false;
+        }
+    }
+    return true;
 }
 
-for(let item of mySet1.keys()) {
-    console.log(item);
+const union = (setA,setB) => {
+    let = _union = new Set(setA);
+    for(let element of setB) {
+        _union.add(element);
+    }
+    return _union;
 }
 
-for(let [key,value] of mySet1.entries()) {
-    console.log(key,value);
+const intersection = (setA,setB) => {
+    let _intersection = new Set();
+    for(let element of setB) {
+        if(setA.has(element)) {
+            _intersection.add(element);
+        }
+    }
+    return _intersection;
 }
-//convert set object to an array object using Array.from method
-const myArr = Array.from(mySet1);
 
-console.log(myArr);
+const symmetricDifference = () => {
+    let _difference = new Set(setA);
+    for(let element of setB) {
+        if(_difference.has(element)) {
+            _difference.delete(element);
+        } else {
+            _difference.add(element);
+        }
+    }
+    return _difference;
+}
 
-//converting between Set and Array
-const mySet2 = new Set([1,2,3,4,4]);
+const difference = (setA,setB) => {
+    let difference = new Set(setA);
+    for(let element of setB) {
+        difference.delete(element);
+    }
+    return difference;
+}
 
-const newArr = [...mySet2];
+console.log(isSuperSet(setA,setB));
 
-const myDupArrayEl = [1,2,3,3,4,4,5,6,6,1];
+console.log(union(setA,setC));
 
-//intersect can be simulated via
-const intersection = new Set([...mySet1].filter(x => mySet2.has(x)));
+console.log(intersection(setA,setC));
 
-console.log('intersection' , intersection);
+console.log(symmetricDifference(setA,setB));
 
-//Difference can be simulated via 
-const difference = new Set([...mySet1].filter(x => !mySet2.has(x)));
-console.log('difference' , difference);
-
-mySet1.forEach((value) => {
-    console.log(value);
-});
+console.log(difference(setA,setC));
