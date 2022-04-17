@@ -45,3 +45,21 @@ for(const [key,value] of myMap.entries()) {
 myMap.forEach((value,key) => {
     console.log(key + ' ' + value);
 });
+
+//Relation with Array objects
+
+const kvArray = [['key1' , 'value1'],['key2','value2']];
+
+//Use the regular Map contructor to transform a 2D key-value Array into a Map
+const myMapConvert = new Map(kvArray);
+console.log(myMapConvert);
+
+//Use Array.from() to transform a map into a 2D key-value Array
+console.log(Array.from(myMapConvert));
+
+//A succinct way to do the same,using the spread syntax
+console.log([...myMapConvert]);
+
+//Or use the keys() or values() iterators,and convert them to an array
+console.log(Array.from(myMap.values()));
+console.log(Array.from(myMap.keys()));
